@@ -1,0 +1,22 @@
+{
+  "name": "github-searcher",
+  "version": "1.0.0",
+  "description": "A simple searcher with github API",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "cross-env NODE_ENV=test babel-node test/index.js | tap-spec ",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "Github-searcher"
+  },
+  "keywords": [
+    "Github-searcher"
+  ],
+  "author": "Daniel",
+  "license": "ISC"
+}
