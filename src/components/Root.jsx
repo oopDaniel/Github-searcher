@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Provider } from 'react-redux';
-import { Router, IndexRoute, Route } from 'react-router';
+import { Router, IndexRoute, Route, Redirect } from 'react-router';
 
 import App from './App/App';
 import Dashboard from './Dashboard/Dashboard';
@@ -19,6 +19,7 @@ const Root = ({ store, history }) => (
         <IndexRoute component={Dashboard} />
         <Route path="/detail/:id" component={Detail} />
       </Route>
+      <Redirect from="/*" to="/" />
     </Router>
   </Provider>
 );

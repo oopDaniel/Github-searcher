@@ -55,12 +55,29 @@ class Search extends Component {
 
     return (
       <div className={styles.container}>
-        <Link to={'/'}>
-          <div className={styles.logo}>
-            GitHub Searcher
+
+        <section className={styles.logo}>
+          <Link
+            className={styles.logo_text}
+            to={'/'}
+          >
+            <div className={styles.logo_text}>
+              GitHub Searcher
+            </div>
+          </Link>
+
+          <div className={styles.source_code}>
+            view &nbsp;
+            <a
+              href="https://github.com/oopDaniel/Github-searcher"
+              className={styles.source_code_link}
+            >
+              source code
+            </a>
           </div>
-        </Link>
-        <div className={styles.searchbar_container}>
+        </section>
+
+        <section className={styles.searchbar_container}>
           <input
             value={keyword}
             type="text"
@@ -75,7 +92,7 @@ class Search extends Component {
           >
             Go!
           </button>
-        </div>
+        </section>
       </div>
     );
   }
