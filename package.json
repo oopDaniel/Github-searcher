@@ -1,7 +1,7 @@
 {
   "name": "github-searcher",
   "version": "1.0.0",
-  "description": "A simple searcher with github API",
+  "description": "A simple GitHub searcher using GitHub API",
   "main": "server.js",
   "directories": {
     "test": "test"
@@ -12,12 +12,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "Github-searcher"
+    "url": "https://github.com/oopDaniel/Github-searcher"
   },
   "keywords": [
-    "Github-searcher"
+    "GitHub-searcher",
+    "GitHub"
   ],
-  "author": "Daniel",
+  "author": "Daniel Chiang",
   "license": "ISC",
   "dependencies": {
     "babel-regenerator-runtime": "^6.5.0",
