@@ -13,6 +13,10 @@
   margin: 0 2rem 2rem;
 };
 
+:local .img {
+  width: 100%;
+}
+
 :local .name {
   font-size: 2rem;
   cursor: default;

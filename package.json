@@ -10,6 +10,7 @@
     "prebuild": "npm run build:clean",
     "build:clean": "rimraf dist",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js --color -p",
+    "postbuild": "cp favicon.ico dist/favicon.ico",
     "test": "cross-env NODE_ENV=test babel-node test/index.js | tap-spec ",
     "start": "node server.es5.js"
   },

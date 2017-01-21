@@ -32,6 +32,7 @@ const Dashboard = ({ result, isFetching }) => {
         >
           <Link to={`/detail/${user.login}`}>
             <img
+              className={styles.img}
               src={user.avatar_url}
               alt={`Avatar for ${user.login}`}
             />
