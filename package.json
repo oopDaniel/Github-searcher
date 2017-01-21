@@ -11,7 +11,7 @@
     "build:clean": "rimraf dist",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js --color -p",
     "test": "cross-env NODE_ENV=test babel-node test/index.js | tap-spec ",
-    "start": "cross-env NODE_ENV=dev babel-node server.js"
+    "start": "node server.es5.js"
   },
   "repository": {
     "type": "git",
