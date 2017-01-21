@@ -1,0 +1,70 @@
+@import './../../styles/color.css';
+
+:local .container {
+  display: flex;
+  flex-direction: column;
+};
+
+:local .title {
+  padding: 1rem 2rem;
+  margin-bottom: 2rem;
+  align-self: center;
+
+  font-size: 2.4rem;
+  color: $title-text;
+
+  border-radius: 1rem;
+  background-color: $title-bg;
+}
+
+:local .content {
+  display: flex;
+  > * {
+    flex: 1 0 48%;
+    margin-top: 1rem;
+  }
+}
+
+:local .figure {
+  padding: 1rem;
+  margin: 0;
+}
+
+:local .avatar {
+  border: 1px solid $avatar-border;
+  border-radius: 4px;
+  padding: 4px;
+  transform: rotate(-3deg);
+
+  width: 100%;
+}
+
+:local .link {
+  display: inline-block;
+  margin-top: .5rem;
+  padding-left: 1.5rem;
+
+  color: $link-color;
+  text-decoration: none;
+  transition: color .2s;
+
+  &:hover {
+    color: $link-color-hover;
+  }
+};
+
+:local .details {
+  display: flex;
+  flex-flow: column nowrap;
+  padding-left: 2rem;
+}
+
+:local .detail {
+  font-size: 1.2rem;
+  color: $dashboard-text-dark;
+  margin: .5rem 0;
+}
+
+:local .details_text {
+  color: $dashboard-text;
+}

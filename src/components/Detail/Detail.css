@@ -1,0 +1,12 @@
+@import './../../styles/color.css';
+
+:local .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  >* {
+    flex: 1 0 400px;
+    margin: 2rem;
+    min-height: 40vh;
+  }
+}

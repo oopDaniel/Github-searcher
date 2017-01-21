@@ -1,0 +1,45 @@
+@import './../../styles/color.css';
+
+:local .container {
+  display: flex;
+  flex-direction: column;
+};
+
+:local .title {
+  padding: 1rem 2rem;
+  margin-bottom: 2rem;
+  align-self: center;
+
+  font-size: 2.4rem;
+  color: $title-text;
+
+  border-radius: 1rem;
+  background-color: $title-bg;
+}
+
+:local .content {
+  display: flex;
+  flex-direction: column;
+}
+
+
+:local .row {
+  text-decoration: none;
+  margin: .5rem;
+  min-height: 3rem;
+  transition: color .2s;
+
+  color: $dashboard-text-dark;
+  border-bottom: 1px solid $row-border;
+  &:hover {
+    color: $link-color-hover;
+  }
+};
+
+:local .row_name {
+  font-size: 1.2rem;
+}
+
+:local .row_desc {
+  color: $avatar-border;
+}
