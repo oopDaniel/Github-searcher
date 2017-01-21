@@ -9,6 +9,7 @@ import { fetchUserDetailRequest } from './../../actions/index';
 
 class Detail extends Component {
   static propTypes = {
+    isFetching: PropTypes.bool.isRequired,
     search: PropTypes.func.isRequired,
     params: PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -24,7 +25,16 @@ class Detail extends Component {
   }
 
   render() {
-    const { info, repo } = this.props;
+    const { info, repo, isFetching } = this.props;
+
+    if (isFetching) {
+      return (
+        <div>
+          <h2>Loading...</h2>
+        </div>
+      );
+    }
+
     return (
       <div className={styles.container}>
         <UserInfo info={info} />
@@ -35,6 +45,7 @@ class Detail extends Component {
 }
 
 const mapStateToProps = state => ({
+  isFetching: state.isFetching,
   info: state.detail.info,
   repo: state.detail.repo,
 });
