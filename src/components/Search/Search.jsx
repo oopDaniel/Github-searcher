@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
-import { browserHistory } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 
 import styles from './Search.css';
 import {
@@ -55,6 +55,11 @@ class Search extends Component {
 
     return (
       <div className={styles.container}>
+        <Link to={'/'}>
+          <div className={styles.logo}>
+            GitHub Searcher
+          </div>
+        </Link>
         <div className={styles.searchbar_container}>
           <input
             value={keyword}
