@@ -21,7 +21,14 @@ var _helmet2 = _interopRequireDefault(_helmet);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var app = (0, _express2.default)();
+var distPath = _path2.default.join(__dirname, 'dist');
 
+var rewritePath = function rewritePath(req, res, next) {
+  req.url = req.url.replace(/\/detail\/static\//, '/');
+  next();
+};
+
+// Webpack related
 if (process.env.NODE_ENV !== 'production') {
   app.use((0, _morgan2.default)('dev'));
   var webpack = require('webpack');
@@ -35,12 +42,19 @@ if (process.env.NODE_ENV !== 'production') {
 } else {
   app.use((0, _morgan2.default)('combined'));
   app.use((0, _helmet2.default)());
-  app.use('/static', _express2.default.static(_path2.default.join(__dirname, 'dist')));
+  app.use('/static', _express2.default.static(distPath));
 }
 
-app.get('*', function (req, res) {
-  res.sendFile(_path2.default.join(__dirname, 'index.html'));
-});
+// Router
+app.get('*', function (req, res, next) {
+  var ext = _path2.default.extname(req.url);
+  var shouldServeHTML = ext !== '.js' && ext !== '.css';
+  if (shouldServeHTML) {
+    res.sendFile(_path2.default.join(__dirname, 'index.html'));
+  } else {
+    next();
+  }
+}, rewritePath, _express2.default.static(distPath));
 
 var host = process.env.HOST || '0.0.0.0';
 var port = process.env.PORT || 3000;
@@ -52,4 +66,3 @@ app.listen(port, host, function (err) {
   }
   console.info('listening at ' + host + ':' + port);
 });
-
