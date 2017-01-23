@@ -10,8 +10,8 @@ import {
   FETCH_USER_DETAIL_REQUEST,
   FETCH_USER_DETAIL_SUCCEEDED,
   FETCH_USER_DETAIL_FAILED,
-  FETCH_REPO_SUCCEEDED,
-  FETCH_REPO_FAILED,
+  FETCH_REPOS_SUCCEEDED,
+  FETCH_REPOS_FAILED,
 } from './../../src/consts/actionTypes';
 
 
@@ -56,16 +56,16 @@ test('IsFetching reducer', (assert) => {
   assert.equal(actual, expect, msg);
 
 
-  msg    = 'must be set to false for FETCH_REPO_SUCCEEDED';
+  msg    = 'must be set to false for FETCH_REPOS_SUCCEEDED';
   expect = false;
-  actual = isFetching(true, { type: FETCH_REPO_SUCCEEDED });
+  actual = isFetching(true, { type: FETCH_REPOS_SUCCEEDED });
 
   assert.equal(actual, expect, msg);
 
 
-  msg    = 'must be set to false for FETCH_REPO_FAILED';
+  msg    = 'must be set to false for FETCH_REPOS_FAILED';
   expect = false;
-  actual = isFetching(true, { type: FETCH_REPO_FAILED });
+  actual = isFetching(true, { type: FETCH_REPOS_FAILED });
 
   assert.equal(actual, expect, msg);
 

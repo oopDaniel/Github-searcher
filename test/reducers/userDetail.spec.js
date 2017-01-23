@@ -6,16 +6,16 @@ import userDetail from './../../src/reducers/userDetail';
 import {
   FETCH_USER_DETAIL_SUCCEEDED,
   FETCH_USER_DETAIL_FAILED,
-  FETCH_REPO_SUCCEEDED,
-  FETCH_REPO_FAILED,
+  FETCH_REPOS_SUCCEEDED,
+  FETCH_REPOS_FAILED,
 } from './../../src/consts/actionTypes';
 
 
 test('UserDetail reducer', (assert) => {
   let msg    = 'must have correct default value for both info & repo';
   let expect = {
-    info: { data: {}, err: '' },
-    repo: { data: [], err: '' },
+    info:  { data: {}, err: '' },
+    repos: { data: [], err: '' },
   };
   let actual = userDetail(undefined, { type: 'I don\'t know' });
 
@@ -25,9 +25,9 @@ test('UserDetail reducer', (assert) => {
   msg    = 'must handle a success for fetching user repo';
   expect = ['PEN', 'PINEAPPLE'];
   actual = userDetail(undefined, {
-    type: FETCH_REPO_SUCCEEDED,
+    type: FETCH_REPOS_SUCCEEDED,
     response: ['PEN', 'PINEAPPLE'],
-  }).repo.data;
+  }).repos.data;
 
   assert.deepEqual(actual, expect, msg);
 
@@ -35,9 +35,9 @@ test('UserDetail reducer', (assert) => {
   msg    = 'must handle a failure for fetching user repo';
   expect = 'Something bad happened';
   actual = userDetail(undefined, {
-    type: FETCH_REPO_FAILED,
+    type: FETCH_REPOS_FAILED,
     error: 'Something bad happened',
-  }).repo.err;
+  }).repos.err;
 
   assert.deepEqual(actual, expect, msg);
 

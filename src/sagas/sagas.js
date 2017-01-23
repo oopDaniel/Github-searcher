@@ -30,12 +30,12 @@ export function* fetchUserDetail(id) {
   }
 }
 
-export function* fetchRepo(id) {
+export function* fetchRepos(id) {
   try {
-    const response = yield call(api.getRepo, id);
-    yield put( actions.fetchRepoSucceeded(response) );
+    const response = yield call(api.getRepos, id);
+    yield put( actions.fetchReposSucceeded(response) );
   } catch (error) {
-    yield put( actions.fetchRepoFailed(error) );
+    yield put( actions.fetchReposFailed(error) );
   }
 }
 
@@ -43,7 +43,7 @@ export function* watchFetchUserDetail() {
   while (true) {
     const { target } = yield take(types.FETCH_USER_DETAIL_REQUEST);
     yield fork(fetchUserDetail, target);
-    yield fork(fetchRepo, target);
+    yield fork(fetchRepos, target);
   }
 }
 

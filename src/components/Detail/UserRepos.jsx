@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react';
 
-import styles from './UserRepo.css';
+import styles from './UserRepos.css';
 
 
 const propTypes = {
-  repo: PropTypes.shape({
+  repos: PropTypes.shape({
     err: PropTypes.string.isRequired,
     data: PropTypes.arrayOf(PropTypes.shape({
       name: PropTypes.string,
@@ -15,12 +15,12 @@ const propTypes = {
   }).isRequired,
 };
 
-const UserRepo = ({ repo }) => {
-  if (repo.err) {
-    return <span>{repo.err}</span>;
+const UserRepos = ({ repos }) => {
+  if (repos.err) {
+    return <span>{repos.err}</span>;
   }
 
-  const { data } = repo;
+  const { data } = repos;
   return (
     <div className={styles.container}>
       <div className={styles.title}>Repos</div>
@@ -40,7 +40,7 @@ const UserRepo = ({ repo }) => {
   );
 };
 
-UserRepo.propTypes = propTypes;
+UserRepos.propTypes = propTypes;
 
 
-export default UserRepo;
+export default UserRepos;

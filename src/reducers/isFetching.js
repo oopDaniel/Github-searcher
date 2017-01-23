@@ -5,8 +5,8 @@ import {
   FETCH_USER_DETAIL_REQUEST,
   FETCH_USER_DETAIL_SUCCEEDED,
   FETCH_USER_DETAIL_FAILED,
-  FETCH_REPO_SUCCEEDED,
-  FETCH_REPO_FAILED,
+  FETCH_REPOS_SUCCEEDED,
+  FETCH_REPOS_FAILED,
 } from './../consts/actionTypes';
 
 const isFetching = (state = false, action) => {
@@ -19,8 +19,8 @@ const isFetching = (state = false, action) => {
     case FETCH_USER_FAILED:
     case FETCH_USER_DETAIL_SUCCEEDED:
     case FETCH_USER_DETAIL_FAILED:
-    case FETCH_REPO_SUCCEEDED:
-    case FETCH_REPO_FAILED: {
+    case FETCH_REPOS_SUCCEEDED:
+    case FETCH_REPOS_FAILED: {
       return false;
     }
     default: {

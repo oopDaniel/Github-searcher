@@ -16,7 +16,7 @@ const API = {
       .catch( error => ({ error }) );
   },
 
-  getRepo(target) {
+  getRepos(target) {
     const url = `https://api.github.com/users/${target}/repos`;
     return fetch(url)
       .then( response => response.json() )

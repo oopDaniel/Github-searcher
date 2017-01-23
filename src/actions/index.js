@@ -47,17 +47,17 @@ export function fetchUserDetailFailed(error) {
   };
 }
 
-export function fetchRepoSucceeded(response) {
+export function fetchReposSucceeded(response) {
   return {
-    type: types.FETCH_REPO_SUCCEEDED,
+    type: types.FETCH_REPOS_SUCCEEDED,
     response,
     receivedAt: Date.now(),
   };
 }
 
-export function fetchRepoFailed(error) {
+export function fetchReposFailed(error) {
   return {
-    type: types.FETCH_REPO_FAILED,
+    type: types.FETCH_REPOS_FAILED,
     error,
     receivedAt: Date.now(),
   };

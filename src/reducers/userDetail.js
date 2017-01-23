@@ -1,8 +1,8 @@
 import {
   FETCH_USER_DETAIL_SUCCEEDED,
-  FETCH_REPO_SUCCEEDED,
+  FETCH_REPOS_SUCCEEDED,
   FETCH_USER_DETAIL_FAILED,
-  FETCH_REPO_FAILED,
+  FETCH_REPOS_FAILED,
 } from './../consts/actionTypes';
 
 function userDetail(state = {
@@ -10,7 +10,7 @@ function userDetail(state = {
     data: {},
     err: '',
   },
-  repo: {
+  repos: {
     data: [],
     err: '',
   },
@@ -25,10 +25,10 @@ function userDetail(state = {
         },
       };
     }
-    case FETCH_REPO_SUCCEEDED: {
+    case FETCH_REPOS_SUCCEEDED: {
       return {
         ...state,
-        repo: {
+        repos: {
           data: action.response,
           err: '',
         },
@@ -43,10 +43,10 @@ function userDetail(state = {
         },
       };
     }
-    case FETCH_REPO_FAILED: {
+    case FETCH_REPOS_FAILED: {
       return {
         ...state,
-        repo: {
+        repos: {
           data: [],
           err: action.error,
         },
