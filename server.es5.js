@@ -24,7 +24,7 @@ var app = (0, _express2.default)();
 var distPath = _path2.default.join(__dirname, 'dist');
 
 var rewritePath = function rewritePath(req, res, next) {
-  req.url = req.url.replace(/\/detail\/static\//, '/');
+  req.url = req.url.replace(/\/detail(\/.*)?\/static\//, '/');
   next();
 };
 
