@@ -87,9 +87,9 @@ export function fetchReadmeFailed(error) {
   };
 }
 
-export function clearReadme() {
+export function cleanReadme() {
   return {
-    type: types.CLEAR_README,
+    type: types.CLEAN_README,
   };
 }
 

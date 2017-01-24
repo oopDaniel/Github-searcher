@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 
 import {
   fetchReadmeRequest,
-  clearReadme as clearReadmeAction,
+  cleanReadme as cleanReadmeAction,
 } from './../../actions/index';
 import Loading from './../Shared/Loading/Loading';
 import styles from './Readme.css';
@@ -15,7 +15,7 @@ class Readme extends Component {
   static propTypes = {
     isFetching: PropTypes.bool.isRequired,
     fetchReadme: PropTypes.func.isRequired,
-    clearReadme: PropTypes.func.isRequired,
+    cleanReadme: PropTypes.func.isRequired,
     readme: PropTypes.shape({
       data: PropTypes.string,
       err: PropTypes.object,
@@ -34,8 +34,8 @@ class Readme extends Component {
   }
 
   componentWillUnmount() {
-    const { clearReadme } = this.props;
-    clearReadme();
+    const { cleanReadme } = this.props;
+    cleanReadme();
   }
 
   render() {
@@ -83,7 +83,7 @@ const mapStateToProps = state => ({
 
 const connectedReadme = connect(mapStateToProps, {
   fetchReadme: fetchReadmeRequest,
-  clearReadme: clearReadmeAction,
+  cleanReadme: cleanReadmeAction,
 })(Readme);
 
 export default connectedReadme;

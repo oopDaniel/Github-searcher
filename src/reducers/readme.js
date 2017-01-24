@@ -1,7 +1,7 @@
 import {
   FETCH_README_SUCCEEDED,
   FETCH_README_FAILED,
-  CLEAR_README,
+  CLEAN_README,
 } from './../consts/actionTypes';
 
 function readme(state = {
@@ -21,7 +21,7 @@ function readme(state = {
         err: action.error,
       };
     }
-    case CLEAR_README: {
+    case CLEAN_README: {
       return {
         data: '',
         err: null,

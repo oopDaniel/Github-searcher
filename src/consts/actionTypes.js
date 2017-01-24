@@ -9,5 +9,5 @@ export const FETCH_REPOS_FAILED           = 'FETCH_REPOS_FAILED';
 export const FETCH_README_REQUEST         = 'FETCH_README_REQUEST';
 export const FETCH_README_SUCCEEDED       = 'FETCH_README_SUCCEEDED';
 export const FETCH_README_FAILED          = 'FETCH_README_FAILED';
-export const CLEAR_README                 = 'CLEAR_README';
+export const CLEAN_README                 = 'CLEAN_README';
 export const CHANGE_INPUT                 = 'CHANGE_INPUT';
