@@ -63,6 +63,35 @@ export function fetchReposFailed(error) {
   };
 }
 
+export function fetchReadmeRequest(user, repo) {
+  return {
+    type: types.FETCH_README_REQUEST,
+    user,
+    repo,
+  };
+}
+
+export function fetchReadmeSucceeded(response) {
+  return {
+    type: types.FETCH_README_SUCCEEDED,
+    response,
+    receivedAt: Date.now(),
+  };
+}
+
+export function fetchReadmeFailed(error) {
+  return {
+    type: types.FETCH_README_FAILED,
+    error,
+    receivedAt: Date.now(),
+  };
+}
+
+export function clearReadme() {
+  return {
+    type: types.CLEAR_README,
+  };
+}
 
 export function changeInput(word) {
   return {
