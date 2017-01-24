@@ -8,7 +8,7 @@ const app = express();
 const distPath = path.join(__dirname, 'dist');
 
 const rewritePath = (req, res, next) => {
-  req.url = req.url.replace(/\/detail\/static\//, '/');
+  req.url = req.url.replace(/\/detail(\/.*)?\/static\//, '/');
   next();
 };
 
