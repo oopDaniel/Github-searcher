@@ -10,7 +10,6 @@ $theme-success-hover: #39A465;
 $theme-success-border-hover: #398439;
 
 
-
 /***********************************
       Color of Components
 ***********************************/
@@ -39,5 +38,7 @@ $title-text: #fff;
 $link-color: #477DCB;
 $link-color-hover: #6096e4;
 
-
+$markdown-link: #4078c0;
+$markdown-code-bg: rgba(0,0,0,0.04);
+$markdown-title-underline: #eee;
 

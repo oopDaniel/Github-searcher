@@ -2,10 +2,10 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 
 import UserInfo from './UserInfo';
-import UserRepo from './UserRepo';
+import UserRepos from './UserRepos';
+import Loading from './../Shared/Loading/Loading';
 import styles from './Detail.css';
 import { fetchUserDetailRequest } from './../../actions/index';
-
 
 class Detail extends Component {
   static propTypes = {
@@ -15,7 +15,7 @@ class Detail extends Component {
       id: PropTypes.string.isRequired,
     }),
     info: PropTypes.object.isRequired,
-    repo: PropTypes.object.isRequired,
+    repos: PropTypes.object.isRequired,
   };
 
   componentWillMount() {
@@ -25,20 +25,23 @@ class Detail extends Component {
   }
 
   render() {
-    const { info, repo, isFetching } = this.props;
+    const {
+      info,
+      repos,
+      isFetching,
+      params,
+    } = this.props;
+    const { id } = params;
 
-    if (isFetching) {
-      return (
-        <div>
-          <h2>Loading...</h2>
-        </div>
-      );
-    }
+    if (isFetching) return <Loading />;
 
     return (
       <div className={styles.container}>
         <UserInfo info={info} />
-        <UserRepo repo={repo} />
+        <UserRepos
+          user={id}
+          repos={repos}
+        />
       </div>
     );
   }
@@ -47,7 +50,7 @@ class Detail extends Component {
 const mapStateToProps = state => ({
   isFetching: state.isFetching,
   info: state.detail.info,
-  repo: state.detail.repo,
+  repos: state.detail.repos,
 });
 
 const connectedDetail = connect(mapStateToProps, {

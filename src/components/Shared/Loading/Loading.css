@@ -1,0 +1,8 @@
+@import './../../../styles/color.css';
+
+:local .container {
+  display: flex;
+  justify-content: center;
+  color: $dashboard-text-dark;
+  font-size: 1.5rem;
+}

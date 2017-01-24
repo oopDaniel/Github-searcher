@@ -10,9 +10,11 @@ import api from './../../src/services/API';
 import {
   watchFetchUser,
   watchFetchUserDetail,
+  watchFetchReadme,
   fetchUser,
   fetchUserDetail,
-  fetchRepo,
+  fetchRepos,
+  fetchReadme,
 } from './../../src/sagas/sagas';
 
 
@@ -99,8 +101,8 @@ test('Watcher for fetching \'userDetail\' request saga', (assert) => {
   assert.deepEqual(actual, expect, msg);
 
 
-  msg    = 'must call \'fetchRepo\' with proper param';
-  expect = fork(fetchRepo, 'APPLE');
+  msg    = 'must call \'fetchRepos\' with proper param';
+  expect = fork(fetchRepos, 'APPLE');
   actual = iterator.next().value;
 
   assert.deepEqual(actual, expect, msg);
@@ -160,12 +162,12 @@ test('Fetching \'userDetail\' saga', (assert) => {
 });
 
 
-test('Fetching \'repo\' saga', (assert) => {
+test('Fetching \'repos\' saga', (assert) => {
 
   let msg    = 'must call getUserDetail API as the initial step';
   let mock   = 'PPAP';
-  const iterator = fetchRepo(mock);
-  let expect = call(api.getRepo, mock);
+  const iterator = fetchRepos(mock);
+  let expect = call(api.getRepos, mock);
   let actual = iterator.next().value;
 
   assert.deepEqual(actual, expect, msg);
@@ -177,7 +179,7 @@ test('Fetching \'repo\' saga', (assert) => {
     { id: 456, name: 'pineApplePen', description: 'another nice project' },
   ];
   const getMock = () => (mock);
-  expect = put(actions.fetchRepoSucceeded(mock));
+  expect = put(actions.fetchReposSucceeded(mock));
   actual = iterator.next(getMock()).value;
   expect.PUT.action.receivedAt = null;
   actual.PUT.action.receivedAt = null;
@@ -187,7 +189,74 @@ test('Fetching \'repo\' saga', (assert) => {
 
   msg       = 'must dispatch failure when an error occurred';
   const err = 'Something extremely bad happened...';
-  expect = put(actions.fetchRepoFailed(err));
+  expect = put(actions.fetchReposFailed(err));
+  actual = iterator.throw(err).value;
+  expect.PUT.action.receivedAt = null;
+  actual.PUT.action.receivedAt = null;
+
+  assert.deepEqual(actual, expect, msg);
+
+
+  assert.ok(iterator.next().done, 'must be finished');
+
+  assert.end();
+});
+
+
+test('Watcher for fetching \'readme\' request saga', (assert) => {
+  const iterator = watchFetchReadme();
+  let msg        = 'must take every \'readme\' request and call according func';
+  let expect     = take(types.FETCH_README_REQUEST);
+  let actual     = iterator.next().value;
+
+  assert.deepEqual(actual, expect, msg);
+
+
+  msg      = 'must call fetchLatest with proper params';
+  expect   = fork(fetchReadme, 'APPLE', 'PEN');
+  actual   = iterator.next({ user: 'APPLE', repo: 'PEN' }).value;
+
+  assert.deepEqual(actual, expect, msg);
+
+
+  msg      = 'must go back to beginning of loop';
+  expect   = take(types.FETCH_README_REQUEST);
+  actual   = iterator.next().value;
+
+  assert.deepEqual(actual, expect, msg);
+
+  assert.end();
+});
+
+
+test('Fetching \'readme\' saga', (assert) => {
+
+  let msg    = 'must call getReadme API as the initial step';
+  let mock   = ['APPLE', 'PEN'];
+  const iterator = fetchReadme(...mock);
+  let expect = call(api.getReadme, ...mock);
+  let actual = iterator.next().value;
+
+  assert.deepEqual(actual, expect, msg);
+
+
+  msg    = 'must dispatch success after a successful API call';
+  mock   = { content: '# Pen Pine Apple Apple Pen' };
+  const getMock = () => (mock);
+  expect = put(actions.fetchReadmeSucceeded(mock));
+  actual = iterator.next(getMock()).value;
+  expect.PUT.action.receivedAt = null;
+  actual.PUT.action.receivedAt = null;
+
+  assert.deepEqual(actual, expect, msg);
+
+
+  msg       = 'must dispatch failure when an error occurred';
+  const err = {
+    res: { status: 404 },
+    message: 'Not found',
+  };
+  expect = put(actions.fetchReadmeFailed(err));
   actual = iterator.throw(err).value;
   expect.PUT.action.receivedAt = null;
   actual.PUT.action.receivedAt = null;
