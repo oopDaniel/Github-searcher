@@ -14,13 +14,6 @@ export function* fetchUser(id) {
   }
 }
 
-export function* watchFetchUser() {
-  while (true) {
-    const { target } = yield take(types.FETCH_USER_REQUEST);
-    yield fork(fetchUser, target);
-  }
-}
-
 export function* fetchUserDetail(id) {
   try {
     const response = yield call(api.getUserDetail, id);
@@ -39,6 +32,22 @@ export function* fetchRepos(id) {
   }
 }
 
+export function* fetchReadme(id, repo) {
+  try {
+    const response = yield call(api.getReadme, id, repo);
+    yield put( actions.fetchReadmeSucceeded(response) );
+  } catch (error) {
+    yield put( actions.fetchReadmeFailed(error) );
+  }
+}
+
+export function* watchFetchUser() {
+  while (true) {
+    const { target } = yield take(types.FETCH_USER_REQUEST);
+    yield fork(fetchUser, target);
+  }
+}
+
 export function* watchFetchUserDetail() {
   while (true) {
     const { target } = yield take(types.FETCH_USER_DETAIL_REQUEST);
@@ -47,7 +56,15 @@ export function* watchFetchUserDetail() {
   }
 }
 
+export function* watchFetchReadme() {
+  while (true) {
+    const { user, repo } = yield take(types.FETCH_README_REQUEST);
+    yield fork(fetchReadme, user, repo);
+  }
+}
+
 export default function* rootSaga() {
   yield fork(watchFetchUser);
   yield fork(watchFetchUserDetail);
+  yield fork(watchFetchReadme);
 }
