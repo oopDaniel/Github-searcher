@@ -60,9 +60,20 @@ class Readme extends Component {
         <div className={styles.title}>{repo}</div>
         <section className={styles.content}>
           <ReactMarkdown source={source} />
-          <Link to={`/detail/${id}`}>
-            <button>Back</button>
-          </Link>
+          <footer className={styles.footer}>
+            <a
+              className={styles.link}
+              href={`https://github.com/${id}/${repo}`}
+            >
+              <button className={styles.btn}>Source Code</button>
+            </a>
+            <Link
+              className={styles.link}
+              to={`/detail/${id}`}
+            >
+              <button className={styles.btn}>Back</button>
+            </Link>
+          </footer>
         </section>
       </div>
     );
