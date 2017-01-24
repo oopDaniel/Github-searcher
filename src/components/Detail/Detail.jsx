@@ -25,7 +25,13 @@ class Detail extends Component {
   }
 
   render() {
-    const { info, repos, isFetching } = this.props;
+    const {
+      info,
+      repos,
+      isFetching,
+      params,
+    } = this.props;
+    const { id } = params;
 
     if (isFetching) {
       return (
@@ -38,7 +44,10 @@ class Detail extends Component {
     return (
       <div className={styles.container}>
         <UserInfo info={info} />
-        <UserRepos repos={repos} />
+        <UserRepos
+          user={id}
+          repos={repos}
+        />
       </div>
     );
   }

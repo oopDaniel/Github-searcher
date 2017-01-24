@@ -5,6 +5,7 @@ import { Router, IndexRoute, Route, Redirect } from 'react-router';
 import App from './App/App';
 import Dashboard from './Dashboard/Dashboard';
 import Detail from './Detail/Detail';
+import Readme from './Readme/Readme';
 import './../styles/styles.css';
 
 const propTypes = {
@@ -18,6 +19,7 @@ const Root = ({ store, history }) => (
       <Route path="/" component={App}>
         <IndexRoute component={Dashboard} />
         <Route path="/detail/:id" component={Detail} />
+        <Route path="/detail/:id/:repo" component={Readme} />
       </Route>
       <Redirect from="/*" to="/" />
     </Router>
