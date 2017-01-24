@@ -7,6 +7,7 @@ import {
   fetchReadmeRequest,
   clearReadme as clearReadmeAction,
 } from './../../actions/index';
+import Loading from './../Shared/Loading/Loading';
 import styles from './Readme.css';
 
 
@@ -39,13 +40,8 @@ class Readme extends Component {
 
   render() {
     const { params, readme, isFetching } = this.props;
-    if (isFetching) {
-      return (
-        <div>
-          <h2>Loading...</h2>
-        </div>
-      );
-    }
+    if (isFetching) return <Loading />;
+
     const { id, repo } = params;
     const { data, err } = readme;
 

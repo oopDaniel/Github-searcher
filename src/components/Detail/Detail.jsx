@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 
 import UserInfo from './UserInfo';
 import UserRepos from './UserRepos';
+import Loading from './../Shared/Loading/Loading';
 import styles from './Detail.css';
 import { fetchUserDetailRequest } from './../../actions/index';
-
 
 class Detail extends Component {
   static propTypes = {
@@ -33,13 +33,7 @@ class Detail extends Component {
     } = this.props;
     const { id } = params;
 
-    if (isFetching) {
-      return (
-        <div>
-          <h2>Loading...</h2>
-        </div>
-      );
-    }
+    if (isFetching) return <Loading />;
 
     return (
       <div className={styles.container}>

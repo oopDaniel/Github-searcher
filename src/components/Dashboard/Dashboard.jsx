@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
+import Loading from './../Shared/Loading/Loading';
 import styles from './Dashboard.css';
 
 
@@ -15,13 +16,7 @@ const propTypes = {
 };
 
 const Dashboard = ({ result, isFetching }) => {
-  if (isFetching) {
-    return (
-      <div>
-        <h2>Loading...</h2>
-      </div>
-    );
-  }
+  if (isFetching) return <Loading />;
 
   return (
     <div className={styles.container}>
