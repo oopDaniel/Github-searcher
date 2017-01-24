@@ -22,7 +22,7 @@ test('UserDetail reducer', (assert) => {
   assert.deepEqual(actual, expect, msg);
 
 
-  msg    = 'must handle a success for fetching user repo';
+  msg    = 'must handle successful request for fetching user repo';
   expect = ['PEN', 'PINEAPPLE'];
   actual = userDetail(undefined, {
     type: FETCH_REPOS_SUCCEEDED,
@@ -32,7 +32,7 @@ test('UserDetail reducer', (assert) => {
   assert.deepEqual(actual, expect, msg);
 
 
-  msg    = 'must handle a failure for fetching user repo';
+  msg    = 'must handle failed request for fetching user repo';
   expect = 'Something bad happened';
   actual = userDetail(undefined, {
     type: FETCH_REPOS_FAILED,
@@ -42,7 +42,7 @@ test('UserDetail reducer', (assert) => {
   assert.deepEqual(actual, expect, msg);
 
 
-  msg    = 'must handle a success for fetching user detail';
+  msg    = 'must handle successful request for fetching user detail';
   expect = { PEN: 'PINEAPPLE' };
   actual = userDetail(undefined, {
     type: FETCH_USER_DETAIL_SUCCEEDED,
@@ -52,7 +52,7 @@ test('UserDetail reducer', (assert) => {
   assert.deepEqual(actual, expect, msg);
 
 
-  msg    = 'must handle a failure for fetching user detail';
+  msg    = 'must handle failed request for fetching user detail';
   expect = 'Something even worse happened';
   actual = userDetail(undefined, {
     type: FETCH_USER_DETAIL_FAILED,
